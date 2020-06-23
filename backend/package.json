@@ -1,0 +1,19 @@
+{
+  "name": "plannerBackend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jorgejunior618/WeddingPlanner.git",
+  "author": "Jorge Junior",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^8.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
