@@ -1,4 +1,5 @@
 readme.md
+.editorconfig
 
 backend/node_modules/
 backend/.editorconfig/
