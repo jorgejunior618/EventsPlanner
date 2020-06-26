@@ -18,7 +18,7 @@ exports.create = async (req, res) => {
     );
 
     return res.json({
-      succes: `${product} succescully added to list`,
+      success: `${product} succescully added to list`,
     });
   }
   catch(e) {
@@ -38,6 +38,6 @@ exports.delete = async (req, res) => {
   .query('UPDATE inviteds SET giftid = 0 WHERE giftid = $1', [id]);
 
   return res.json({
-    succes: 'Gift successfully removed from the list.'
+    success: 'Gift successfully removed from the list.'
   })
 }

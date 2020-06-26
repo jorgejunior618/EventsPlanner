@@ -35,7 +35,7 @@ exports.create = async (req, res) => {
     );
 
     return res.json({
-      succes: `Invitation to ${name} succescully created`,
+      success: `Invitation to ${name} succescully created`,
     });
   }
   catch(e) {
@@ -61,7 +61,7 @@ exports.update = async (req, res) => {
   }
 
   return res.json({
-    succes: 'Invited successfuly updated.',
+    success: 'Invited successfuly updated.',
   });
 }
 
@@ -73,7 +73,7 @@ exports.delete = async (req, res) => {
     .query('DELETE FROM inviteds WHERE id = $1', [id]);
 
     return res.json({
-      succes: 'Invited successfuly deleted.',
+      success: 'Invited successfuly deleted.',
     });
   } catch(e) {
     return res.json({
