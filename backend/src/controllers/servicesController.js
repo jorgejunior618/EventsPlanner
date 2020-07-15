@@ -30,7 +30,7 @@ exports.create = async (req, res) => {
     });
   }
   return res.json({
-    error: 'Service can`t cost more than 99,999.99.',
+    error: 'Service can`t cost more than R$ 99,999.99 .',
   });
 };
 
