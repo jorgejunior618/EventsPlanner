@@ -8,13 +8,13 @@ exports.read = async (req, res) => {
 }
 
 exports.create = async (req, res) => {
-  const { product } = req.body;
+  const { product, eventid } = req.body;
 
   try {
     const response = await configDb
     .query(
-      'INSERT INTO gifts (product) VALUES($1)',
-      [product]
+      'INSERT INTO gifts (product, eventid) VALUES($1, $2)',
+      [product, eventid]
     );
 
     return res.json({

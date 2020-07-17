@@ -4,6 +4,8 @@ exports.read = async (req, res) => {
   const { rows: services } = await configDb
   .query('SELECT * FROM services ORDER BY service ASC');
 
+  console.log(services);
+
   const totalPricing = services
   .reduce((acumulator, service) => acumulator + Number(service.pricing), 0);
 
@@ -16,13 +18,13 @@ exports.read = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-  const { service, provider, pricing } = req.body;
+  const { service, provider, pricing, eventid } = req.body;
 
   if (pricing < 100000) {
-    const response = configDb
+    const response = await configDb
     .query(
-      'INSERT INTO services (service, provider, pricing) VALUES($1, $2, $3)',
-      [service, provider, pricing]
+      'INSERT INTO services (service, provider, pricing, eventid) VALUES($1, $2, $3, $4)',
+      [service, provider, pricing, eventid]
     );
 
     return res.json({
