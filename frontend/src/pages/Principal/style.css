@@ -1,6 +1,5 @@
 .content h2,
 .content h3 {
-  font-family: 'Merienda One', cursive;
   font-family: 'Amatic SC', cursive;
   font-weight: 700;
   font-size: 32px;
@@ -24,11 +23,46 @@
 
   width: 90%;
   position: relative;
-  margin: 15px 8px;
+  margin: 0 8px;
 
   border-radius: 8px;
   background-color: #e0e0e5;
+}
 
+.content #head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content #head a {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: #5db889;
+}
+
+.content #head a span {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  background: url('../../assets/arrow-left.svg') no-repeat center;
+  background-size: cover;
+}
+
+.content #head a#create {
+  margin-right: 5%;
+}
+
+.content #head a#create span {
+  background: url('../../assets/plus2.svg') no-repeat center;
+  background-size: cover;
+  margin: 0 0 0 10px
+}
+
+.content ul li + li {
+  margin-top: 15px;
 }
 
 .content ul li:nth-child(odd) {

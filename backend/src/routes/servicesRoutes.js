@@ -3,9 +3,9 @@ const ServicesController = require('../controllers/servicesController');
 
 const router = express();
 
-router.get('/services', ServicesController.read);
-router.post('/services', ServicesController.create);
-router.put('/services/:id', ServicesController.update);
-router.delete('/services/:id', ServicesController.delete);
+router.get('/events/:eventid/services', ServicesController.read);
+router.post('/events/:eventid/services', ServicesController.create);
+router.put('/events/:eventid/services/:id', ServicesController.update);
+router.delete('/events/:eventid/services/:id', ServicesController.delete);
 
 module.exports = router;

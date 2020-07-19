@@ -28,7 +28,6 @@ a {
 h1 {
   font-size: 70px;
   line-height: 40px;
-  font-family: 'Grenze Gotisch', cursive;
   font-family: 'Amatic SC', cursive;
   font-weight: 700;
   margin: 20px 0;
@@ -51,4 +50,18 @@ h3 {
   background-color: #f0f0fe;
   border-radius: 10px;
   box-shadow: 0 0 8px #0006;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d3d3f3;
+  border-radius: 8px;
+}
+::-webkit-scrollbar {
+  width: 9px;
+  background: #0000;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #afafd3;
+  border-radius: 6px;
 }

@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import MainPage from './pages/Principal/index';
 
-import EventsList from './pages/Lists/Events/index';
+import ShowEvent from './pages/Events/index';
 import InvitedsList from './pages/Lists/Inviteds/index';
 import GiftsList from './pages/Lists/Gifts/index';
 
@@ -17,13 +17,13 @@ function Routes() {
       <Switch>
         <Route path="/" exact component={MainPage} />
 
-        <Route path="/events" exact component={EventsList} />
-        <Route path="/event/inviteds" exact component={InvitedsList} />
-        <Route path="/event/gifts" exact component={GiftsList} />
+        <Route path="/event/:id" exact component={ShowEvent} />
+        <Route path="/event/:id/inviteds" exact component={InvitedsList} />
+        <Route path="/event/:id/gifts" exact component={GiftsList} />
 
-        <Route path="/events/new" component={CreateEvent} />
-        <Route path="/event/inviteds/new" component={CreateInvite} />
-        <Route path="/event/gifts/new" component={CreateGift} />
+        <Route path="/new-event" component={CreateEvent} />
+        <Route path="/event/:id/inviteds/new" component={CreateInvite} />
+        <Route path="/event/:id/gifts/new" component={CreateGift} />
       </Switch>
     </BrowserRouter>
   );

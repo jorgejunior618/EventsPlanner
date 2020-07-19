@@ -1,15 +1,15 @@
 const configDb = require('../config/database');
 
 exports.read = async (req, res) => {
+  const { eventid } = req.params;
   const { rows: services } = await configDb
-  .query('SELECT * FROM services ORDER BY service ASC');
-
-  console.log(services);
+    .query(
+      'SELECT * FROM services WHERE eventid = $1 ORDER BY service ASC',
+      [eventid]
+    );
 
   const totalPricing = services
   .reduce((acumulator, service) => acumulator + Number(service.pricing), 0);
-
-  console.log('total', totalPricing);
 
   return res.json({
     services,
@@ -18,11 +18,12 @@ exports.read = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-  const { service, provider, pricing, eventid } = req.body;
+  const { eventid } = req.params;
+  const { service, provider, pricing } = req.body;
 
   if (pricing < 100000) {
     const response = await configDb
-    .query(
+      .query(
       'INSERT INTO services (service, provider, pricing, eventid) VALUES($1, $2, $3, $4)',
       [service, provider, pricing, eventid]
     );
@@ -37,23 +38,27 @@ exports.create = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-  const { id } = req.params;
+  const { eventid, id } = req.params;
   const { service, provider, pricing, confirmed } = req.body;
 
   const { rows } = await configDb
-  .query('SELECT * FROM services WHERE id = $1', [id]);
+    .query(
+      'SELECT * FROM services WHERE id = $1 AND eventid = $2',
+      [id, eventid]
+    );
 
   const oldService = rows[0];
 
   const response = await configDb
-  .query(
-    'UPDATE services SET service = $1, provider = $2, pricing = $3, confirmed =$4 WHERE id = $5',
+    .query(
+    'UPDATE services SET service = $1, provider = $2, pricing = $3, confirmed =$4 WHERE id = $5 AND eventid = $6',
     [
       service || oldService.service,
       provider || oldService.provider,
       pricing || oldService.pricing,
       confirmed,
-      id
+      id,
+      eventid
     ]
   )
 
@@ -63,10 +68,13 @@ exports.update = async (req, res) => {
 };
 
 exports.delete = async (req, res) => {
-  const { id } = req.params;
+  const { eventid, id } = req.params;
 
   const response = await configDb
-  .query('DELETE FROM services WHERE id = $1', [id]);
+    .query(
+      'DELETE FROM services WHERE id = $1 AND eventid = $2',
+      [id, eventid]
+    );
 
   if(response.rowCount) {
     return res.json({

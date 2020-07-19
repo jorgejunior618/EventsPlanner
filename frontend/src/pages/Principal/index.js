@@ -26,9 +26,19 @@ function Prinipal() {
 
   return (
     <div>
-      <h1>Events Planner</h1>
+      <Link to="/">
+        <h1>Events Planner</h1>
+      </Link>
+
       <div className="content">
-        <h2>Sua Lista de Eventos</h2>
+        <div id="head">
+          <h2>Sua Lista de Eventos</h2>
+
+          <Link id="create" to="/new-event">
+            Adicionar Evento
+            <span></span>
+          </Link>
+        </div>
         <ul>
           {events.map(event => (
             <li key={event.id}>
@@ -47,7 +57,7 @@ function Prinipal() {
 
               </div>
 
-              <Link to={`/invited/${event.id}`}>Abrir</Link>
+              <Link to={`/event/${event.id}`}>Abrir</Link>
             </li>
           ))}
         </ul>

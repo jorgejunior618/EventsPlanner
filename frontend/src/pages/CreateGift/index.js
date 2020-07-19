@@ -8,4 +8,4 @@ function CreateGift() {
   )
 }
 
-export default CreateGift();
+export default CreateGift;
