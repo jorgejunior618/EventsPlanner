@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './style.css';
 
@@ -22,7 +22,7 @@ const events = [
 ]
 
 function Prinipal() {
-  const history = useHistory();
+  localStorage.clear();
 
   return (
     <div>

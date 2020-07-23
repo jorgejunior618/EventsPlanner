@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Gifts() {
+function CreateService() {
   return (
     <div>
 
@@ -8,4 +8,4 @@ function Gifts() {
   )
 }
 
-export default Gifts;
+export default CreateService;

@@ -1,0 +1,93 @@
+.content#list section {
+  display: flex;
+  flex-direction: column;
+
+  width: 80%;
+  height: 68vh;
+}
+
+.content#list section #manage-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.content#list section #manage-list h3 {
+  margin: 0;
+}
+
+.content#list section #manage-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content#list section #manage-list a {
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.content#list section #manage-list a span {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  margin-left: 10px;
+  background: url('../../assets/plus.svg') no-repeat center;
+  background-size: cover;
+}
+
+.content#list section ul {
+  width: 100%;
+  margin-bottom: 25px;
+  padding-left: 5px;
+  border-radius: 4px;
+  background-color: #e0eeee;
+}
+
+.content#list section ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: auto;
+  position: relative;
+}
+
+.content#list section ul li #data {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 8px;
+  height: auto;
+  padding: 10px 15px;
+}
+
+.content#list section ul li a {
+  display: flex;
+  height: 100%;
+
+  position: absolute;
+  right: 0;
+}
+
+.content#list section #total-price div, .content#list section #list-count {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 15px;
+  font-size: 18px;
+}
+
+.content#list section #list-count {
+  font-size: 16px;
+}
+
+.content#list section #total-price::before {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 400px;
+  margin: 0 auto;
+  background-color: #000;
+}

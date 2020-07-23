@@ -89,6 +89,10 @@ let evento = {
 
 function Event() {
   const { id } = useParams();
+
+  localStorage.setItem('eventId', evento.id);
+  localStorage.setItem('eventName', evento.event);
+
   return (
     <div>
     <Link to="/">
@@ -97,7 +101,7 @@ function Event() {
 
     <div className="content" id="event">
       <div id="head">
-        <h2>{evento.event}</h2>
+        <h2>{localStorage.getItem('eventName')}</h2>
 
         <Link to="/">
           <span></span>
@@ -117,10 +121,11 @@ function Event() {
 
         <ul>
         {evento.inviteds.map(invited => (
-          <li>
+          <li key={evento.id}>
             <p>{invited.name}</p>
           </li>
         ))}
+        <li key="10"> ... </li>
         </ul>
 
         <Link id="open-list" to={`${id}/inviteds`}>Ver Lista</Link>
