@@ -25,6 +25,14 @@ a {
   text-decoration: none;
 }
 
+input, button {
+  outline: none;
+}
+
+input:focus, button:focus {
+  box-shadow: 0 0 5px #0006;
+}
+
 h1 {
   display: inline-block;
   font-size: 70px;

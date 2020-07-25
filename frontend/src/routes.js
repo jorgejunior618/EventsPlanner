@@ -21,9 +21,9 @@ function Routes() {
         <Route path="/event/:id/:list" exact component={Lists} />
 
         <Route path="/new-event" component={CreateEvent} />
-        <Route path="/event/:id/inviteds/new" component={CreateInvite} />
-        <Route path="/event/:id/gifts/new" component={CreateGift} />
-        <Route path="/event/:id/services/new" component={CreateService} />
+        <Route path="/event/:id/inviteds/:action" component={CreateInvite} />
+        <Route path="/event/:id/gifts/:action" component={CreateGift} />
+        <Route path="/event/:id/services/:action" component={CreateService} />
       </Switch>
     </BrowserRouter>
   );

@@ -1,0 +1,62 @@
+.content#create-event #head a {
+  margin-left: auto;
+}
+
+.content#create-event form {
+  display: flex;
+  flex-direction: column;
+
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px 30px;
+
+  position: relative;
+  width: 80%;
+}
+
+.content#create-event form * {
+  font-family: 'Cabin', sans-serif;
+}
+
+.content#create-event form .field label {
+  font-weight: 600;
+}
+
+.content#create-event form .field {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+}
+
+.content#create-event form .field input#date {
+  width: fit-content;
+}
+
+.content#create-event form .field input {
+  padding: 8px;
+  border: none;
+  border-bottom: solid 1px #000;
+  border-radius: 4px;
+  background-color: #f0f0fe;
+  outline: none;
+  font-size: 16px;
+}
+
+.content#create-event form button {
+  display: flex;
+  justify-content: center;
+
+  background-color: #7dd3a0;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 30px;
+  margin-top: 20px;
+
+  font-weight: 600;
+  font-size: 16px;
+  margin-left: auto;
+}
+
+.content#create-event form button:hover {
+  filter: brightness(110%)
+}

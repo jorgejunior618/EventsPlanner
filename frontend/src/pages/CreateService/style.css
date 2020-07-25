@@ -1,0 +1,58 @@
+.content#create-service form {
+  display: flex;
+  flex-direction: column;
+
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px 30px;
+
+  position: relative;
+  width: 80%;
+}
+
+.content#create-service form * {
+  font-family: 'Cabin', sans-serif;
+}
+
+.content#create-service form .field {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+}
+
+.content#create-service form .field label {
+  font-weight: 600;
+}
+
+.content#create-service form .field input {
+  padding: 8px;
+  border: none;
+  border-bottom: solid 1px #000;
+  border-radius: 4px;
+  background-color: #f0f0fe;
+  outline: none;
+  font-size: 16px;
+}
+
+.content#create-service form .field input#price {
+  width: 150px;
+}
+
+.content#create-service form button {
+  display: flex;
+  justify-content: center;
+
+  background-color: #7dd3a0;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 30px;
+  margin-top: 20px;
+
+  font-weight: 600;
+  font-size: 16px;
+  margin-left: auto;
+}
+
+.content#create-service form button:hover {
+  filter: brightness(110%)
+}

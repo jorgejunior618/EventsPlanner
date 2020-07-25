@@ -1,9 +1,11 @@
+.content #head {
+  margin-bottom: 20px;
+}
 .content h2,
 .content h3 {
   font-family: 'Amatic SC', cursive;
   font-weight: 700;
   font-size: 32px;
-  margin-bottom: 20px;
 }
 
 .content h3 {
@@ -85,6 +87,21 @@
 .content ul li #event-data {
   flex: 1;
   margin: 8px 12px;
+}
+
+.content ul#events li button#delete {
+  display: flex;
+  margin-left: 5px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background: none;
+  cursor: pointer;
+}
+
+.content ul#events li button#delete img {
+  width: 30px;
+  cursor: pointer;
 }
 
 .content ul li a {

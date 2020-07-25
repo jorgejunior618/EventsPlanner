@@ -90,6 +90,7 @@ let evento = {
 function Event() {
   const { id } = useParams();
 
+  localStorage.removeItem('idToUpdate');
   localStorage.setItem('eventId', evento.id);
   localStorage.setItem('eventName', evento.event);
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './style.css';
+import trashIcon from '../../assets/trash.svg'
 
 const events = [
   {
@@ -24,6 +25,10 @@ const events = [
 function Prinipal() {
   localStorage.clear();
 
+  function handleDelete() {
+    console.log('deletou')
+  }
+
   return (
     <div>
       <Link to="/">
@@ -39,9 +44,16 @@ function Prinipal() {
             <span></span>
           </Link>
         </div>
-        <ul>
+        <ul id="events">
           {events.map(event => (
             <li key={event.id}>
+              <button
+                onClick={handleDelete}
+                id="delete"><img
+                src={trashIcon}
+                alt="Deletar"/>
+              </button>
+
               <div id="event-data">
 
                 <h3>{event.name}</h3>

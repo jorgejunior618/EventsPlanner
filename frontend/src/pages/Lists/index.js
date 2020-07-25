@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import './style.css';
+import trashIcon from '../../assets/trash.svg';
 
 const convidados = [
   {
@@ -123,7 +124,17 @@ const servicos = {
 function Lists() {
   const { list } = useParams();
 
+  localStorage.removeItem('idToUpdate');
+
   const pageName = list === 'inviteds' ? 'Convidados' : (list === 'gifts'? 'Presentes':'Serviços');
+
+  function handleDelete() {
+    console.log('clicou')
+  }
+
+  function handleUpdate(id) {
+    localStorage.setItem('idToUpdate', id);
+  }
 
   function listToShow() {
     if(list === 'inviteds') {
@@ -142,6 +153,13 @@ function Lists() {
       if(pageName === 'Convidados') {
         return (
         <li key={item.id}>
+          <button
+            onClick={handleDelete}
+            id="delete"><img
+            src={trashIcon}
+            alt="Deletar"/>
+          </button>
+
           <div id="data">
             <strong>Nome:</strong> {item.name}
 
@@ -151,7 +169,7 @@ function Lists() {
             <strong>Presente:</strong> {item.gift.id? item.gift.product: 'Nenhum'}
           </div>
 
-          <Link to={`${list}/${item.id}`}>Editar</Link>
+          <Link onClick={() => handleUpdate(item.id)} to={`${list}/update`}>Editar</Link>
         </li>
         );
       }
@@ -159,13 +177,20 @@ function Lists() {
       else if(pageName === 'Presentes') {
         return (
           <li key={item.id}>
+            <button
+              onClick={handleDelete}
+              id="delete"><img
+              src={trashIcon}
+              alt="Deletar"/>
+            </button>
+
             <div id="data">
               <strong>Nome:</strong> {item.product}
 
               <strong title="Algum convidado ja confirmou o presente">Confirmado:</strong><strong> {item.confirmed? 'Sim' : 'Não'}</strong>
             </div>
 
-            <Link to={`${list}/${item.id}`}>Editar</Link>
+            <Link onClick={() => handleUpdate(item.id)} to={`${list}/update`}>Editar</Link>
           </li>
         );
       }
@@ -174,6 +199,13 @@ function Lists() {
         if (isNaN(item)) {
           return (
             <li key={item.id}>
+              <button
+                onClick={handleDelete}
+                id="delete"><img
+                src={trashIcon}
+                alt="Deletar"/>
+              </button>
+
               <div id="data">
                 <strong>Nome:</strong> {item.service}
 
@@ -184,7 +216,8 @@ function Lists() {
                 <strong>Valor:</strong><strong> {item.pricing}</strong>
               </div>
 
-              <Link to={`${list}/${item.id}`}>Editar</Link>
+
+              <Link onClick={() => handleUpdate(item.id)} to={`${list}/update`}>Editar</Link>
             </li>
           );
         }

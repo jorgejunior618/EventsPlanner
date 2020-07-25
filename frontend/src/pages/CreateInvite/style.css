@@ -1,0 +1,83 @@
+.content#create-invited form {
+  display: flex;
+  flex-direction: column;
+
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px 30px;
+
+  position: relative;
+  width: 80%;
+}
+
+.content#create-invited form * {
+  font-family: 'Cabin', sans-serif;
+}
+
+.content#create-invited form .field label {
+  font-weight: 600;
+}
+
+.content#create-invited form .field {
+  display: flex;
+  margin-top: 25px;
+}
+
+.content#create-invited form .field#name {
+  flex-direction: column;
+}
+
+.content#create-invited form .field#name input {
+  padding: 8px;
+  border: none;
+  border-bottom: solid 1px #000;
+  border-radius: 4px;
+  background-color: #f0f0fe;
+  outline: none;
+  font-size: 16px;
+}
+
+.content#create-invited form .field#confirmation,
+.content#create-invited form .field#gift {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+}
+
+.content#create-invited form .field#confirmation input {
+  width: 18px;
+  height: 18px;
+}
+
+.content#create-invited form .field select {
+  width: 80%;
+  padding: 4px 8px;
+  background-color: #f0f0fe;
+  margin-left: 15px;
+  border-radius: 6px;
+
+  font-size: 16px;
+  outline: none;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.content#create-invited form button {
+  display: flex;
+  justify-content: center;
+
+  background-color: #7dd3a0;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 30px;
+  margin-top: 20px;
+
+  font-weight: 600;
+  font-size: 16px;
+  margin-left: auto;
+}
+
+.content#create-invited form button:hover {
+  filter: brightness(110%)
+}
