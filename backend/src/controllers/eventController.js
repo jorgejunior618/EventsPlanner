@@ -74,6 +74,15 @@ exports.delete = async (req, res) => {
     const response = await configDb
       .query('DELETE FROM events WHERE id = $1', [id]);
 
+    await configDb
+      .query('DELETE FROM inviteds WHERE eventid = $1', [id]);
+
+    await configDb
+      .query('DELETE FROM gifts WHERE eventid = $1', [id]);
+
+    await configDb
+      .query('DELETE FROM services WHERE eventid = $1', [id]);
+
     return res.json(response);
   } catch(e) {
     return res.json(e)
