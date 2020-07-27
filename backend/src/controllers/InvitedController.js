@@ -105,8 +105,6 @@ exports.delete = async (req, res) => {
       [id, eventid]
     );
 
-  console.log(invitedToDelete[0].giftid)
-
   if (invitedToDelete[0].giftid) {
     const responseGifts = await configDb
       .query(

@@ -1,98 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
+import api from '../../Services/api';
 import './style.css';
-
-let evento = {
-  id: 1,
-  event: 'Aniversário da Bia',
-  inviteds: [
-    {
-      id: 1,
-      name: "Jorge",
-      confirmed: false,
-      eventid: 2,
-      gift: {}
-    },
-    {
-      id: 2,
-      name: "JUAUM",
-      confirmed: false,
-      eventid: 2,
-      gift: {}
-    },
-    {
-      id: 3,
-      name: "Victor Gustavo",
-      confirmed: false,
-      eventid: 2,
-      gift: {}
-    },
-    {
-      id: 1,
-      name: "Jorge",
-      confirmed: false,
-      eventid: 2,
-      gift: {}
-    },
-    {
-      id: 2,
-      name: "JUAUM",
-      confirmed: false,
-      eventid: 2,
-      gift: {}
-    },
-    {
-      id: 3,
-      name: "Victor Gustavo",
-      confirmed: false,
-      eventid: 2,
-      gift: {}
-    },
-    {
-      id: 1,
-      name: "Jorge",
-      confirmed: false,
-      eventid: 2,
-      gift: {}
-    },
-    {
-      id: 2,
-      name: "JUAUM",
-      confirmed: false,
-      eventid: 2,
-      gift: {}
-    },
-    {
-      id: 3,
-      name: "Victor Gustavo",
-      confirmed: false,
-      eventid: 2,
-      gift: {}
-    },
-  ],
-  gifts: [
-    {
-      id: 1,
-      product: "Liquidificador",
-      confirmed: false,
-      eventid: 2
-    },
-    {
-      id: 2,
-      product: "Geladeira",
-      confirmed: false,
-      eventid: 2
-    },
-  ],
-}
 
 function Event() {
   const { id } = useParams();
 
-  localStorage.removeItem('idToUpdate');
-  localStorage.setItem('eventId', evento.id);
-  localStorage.setItem('eventName', evento.event);
+  const [ inviteds, setInviteds ] = useState([]);
+  const [ gifts, setGifts ] = useState([]);
+  const [ services, setServices ] = useState([]);
+  const [eventName, setEventName ] = useState([])
+
+  useEffect(() => {
+    api.get(`events/${id}/inviteds`).then(response => {
+      setInviteds(response.data.slice(0, 5));
+    });
+
+    api.get(`events/${id}/gifts`).then(response => {
+      setGifts(response.data.slice(0, 5));
+    });
+
+    api.get(`events/${id}/services`).then(response => {
+      setServices(response.data.services.slice(0, 5));
+    });
+
+    api.get(`events`).then(response => {
+      setEventName(response.data.filter(event => event.id == id)[0].event);
+    });
+  }, []);
+
+  localStorage.clear()
+  localStorage.setItem('eventName', eventName);
 
   return (
     <div>
@@ -121,12 +60,13 @@ function Event() {
         </div>
 
         <ul>
-        {evento.inviteds.map(invited => (
-          <li key={evento.id}>
+        {inviteds.map(invited => (
+          <li key={invited.id}>
             <p>{invited.name}</p>
           </li>
         ))}
-        <li key="10"> ... </li>
+
+          <li key="0"> ... </li>
         </ul>
 
         <Link id="open-list" to={`${id}/inviteds`}>Ver Lista</Link>
@@ -143,12 +83,14 @@ function Event() {
         </div>
 
         <ul>
-        {evento.gifts.map(gift => (
-          <li>
+        {gifts.map(gift => (
+          <li key={gift.id}>
             <p>{gift.product}</p>
             <p>confirmado: <strong>{gift.confirmed? 'Sim': 'Não'}</strong></p>
           </li>
         ))}
+
+         <li key="0"> ... </li>
         </ul>
 
         <Link id="open-list" to={`${id}/gifts`}>Ver Lista</Link>
@@ -165,11 +107,13 @@ function Event() {
         </div>
 
         <ul>
-        {evento.inviteds.map(invited => (
+        {services.map(service => (
           <li>
-            <p>{invited.name}</p>
+            <p>{service.service}</p>
           </li>
         ))}
+
+          <li key="0"> ... </li>
         </ul>
 
         <Link id="open-list" to={`${id}/services`}>Ver Lista</Link>
