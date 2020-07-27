@@ -26,7 +26,7 @@ function Event() {
     });
 
     api.get(`events`).then(response => {
-      setEventName(response.data.filter(event => event.id == id)[0].event);
+      setEventName(response.data.filter(event => event.id === +id)[0].event);
     });
   }, []);
 

@@ -76,11 +76,30 @@
   cursor: default;
 }
 
+.content ul li h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content ul li h3 button {
+  border: none;
+  background: none;
+
+  padding: 6px 10px;
+  cursor: pointer;
+  pointer-events: unset;
+
+  font-family: 'Cabin', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #5db889;
+}
 
 .content ul li dl {
   display: grid;
   align-items: center;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 3fr 1fr;
   gap: 7px;
 }
 

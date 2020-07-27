@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import api from '../../Services/api';
 import './style.css';
 import trashIcon from '../../assets/trash.svg'
 
 function Prinipal() {
+  const history = useHistory();
+
   const [ events, setEvents ] = useState([]);
 
   useEffect(()=> {
@@ -24,6 +26,14 @@ function Prinipal() {
     setEvents(events.filter(event => event.id !== id))
   }
 
+  function handleUpdateEvent(eventId, eventName, eventDate) {
+    localStorage.setItem('eventToUpdateId', eventId);
+    localStorage.setItem('eventToUpdateName', eventName);
+    localStorage.setItem('eventToUpdateDate', eventDate.split('/').reverse().join('-'));
+
+    history.push('events/update')
+  }
+
   return (
     <div>
       <Link to="/">
@@ -34,7 +44,7 @@ function Prinipal() {
         <div id="head">
           <h2>Sua Lista de Eventos</h2>
 
-          <Link id="create" to="/new-event">
+          <Link id="create" to="events/new">
             Adicionar Evento
             <span></span>
           </Link>
@@ -51,7 +61,10 @@ function Prinipal() {
                 </button>
 
                 <div id="event-data">
-                  <h3>{event.event}</h3>
+                  <h3>
+                    {event.event}
+                    <button onClick={() => handleUpdateEvent(event.id, event.event, event.date)}>Editar</button>
+                  </h3>
 
                   <dl>
                     <dt>Quantidade de convidados</dt>

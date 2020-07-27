@@ -1,17 +1,44 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useState } from 'react'
+import React, { useState } from 'react';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
+import api from '../../Services/api';
 import './style.css';
 
 function CreateEvent() {
-  function handleNewEvent(event) {
+  const history = useHistory();
+  const { action } = useParams()
+
+  const [eventName, setName] = useState(
+    (action === 'new') ? 'Novo Evento' : localStorage.getItem('eventToUpdateName')
+  );
+  const [eventDate, setDate] = useState(
+    (action === 'new') ? 'Novo Evento' : localStorage.getItem('eventToUpdateDate')
+  );
+  const today = new Date().toISOString().split('T')[0];
+
+  async function handleNewEvent(event) {
     event.preventDefault();
-    const dataEvent = document.querySelector('input#date').value;
-    alert(typeof dataEvent)
+
+    const date = eventDate.split('-').reverse().join('/');
+
+    const eventData = {
+      event: eventName,
+      date,
+    }
+
+    try {
+      const response = (action === 'new') ?
+        await api.post('events', eventData) :
+        await api.put(`events/${localStorage.getItem('eventToUpdateId')}`, eventData);
+
+      alert(`Evento ${eventData.event} criado com sucesso`);
+      localStorage.clear();
+
+      history.push('/');
+    } catch(e) {
+      alert('Erro na criação do event, tente novamente');
+    }
   }
-  const [eventData, setdata] = useState('');
-  const [eventName, setName] = useState('Novo Evento');
 
   return (
     <div>
@@ -49,10 +76,11 @@ function CreateEvent() {
 
             <input
               type="date"
+              min={today}
               name="date"
               id="date"
-              value={eventData}
-              onChange={e => setdata(e.target.value)}
+              value={eventDate}
+              onChange={e => setDate(e.target.value)}
             />
           </div>
 
