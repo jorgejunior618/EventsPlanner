@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 
 import api from '../../Services/api';
 import './style.css';
 
 function CreateGift() {
+  const history = useHistory();
   const { id, action } = useParams();
 
   const [ product, setProduct ] = useState(
@@ -24,7 +25,8 @@ function CreateGift() {
         await api.post(`events/${id}/gifts`, data) :
         await api.put(`events/${id}/gifts/${localStorage.getItem('idToUpdate')}`, data);
 
-      alert('Presente adicionado com sucesso à lista')
+      alert('Presente adicionado com sucesso à lista');
+      history.push(`/event/${id}/gifts`)
     } catch (e) {
       alert('Erro ao adicionar presente');
     }

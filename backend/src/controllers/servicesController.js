@@ -19,13 +19,13 @@ exports.read = async (req, res) => {
 
 exports.create = async (req, res) => {
   const { eventid } = req.params;
-  const { service, provider, pricing } = req.body;
+  const { service, provider, pricing, confirmed } = req.body;
 
   if (pricing < 100000) {
     const response = await configDb
       .query(
-      'INSERT INTO services (service, provider, pricing, eventid) VALUES($1, $2, $3, $4)',
-      [service, provider, pricing, eventid]
+      'INSERT INTO services (service, provider, pricing, eventid, confirmed) VALUES($1, $2, $3, $4, $5)',
+      [service, provider, pricing, eventid, confirmed]
     );
 
     return res.json({

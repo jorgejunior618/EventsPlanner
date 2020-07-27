@@ -14,10 +14,25 @@
   font-family: 'Cabin', sans-serif;
 }
 
-.content#create-service form .field {
+.content#create-service form .field, .subfield {
   display: flex;
   flex-direction: column;
   margin-top: 25px;
+}
+
+.subfield {
+  align-items: center;
+}
+
+.subfield #confirmation {
+  width: 18px;
+  height: 18px;
+  margin-top: 5px;
+}
+
+.content#create-service form .field#double {
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .content#create-service form .field label {
