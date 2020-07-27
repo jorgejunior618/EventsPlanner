@@ -18,7 +18,7 @@ function Lists() {
     api.get(`events/${id}/${list}`).then(response => {
       setPageList(response.data)
     });
-  }, []);
+  }, [id, list]);
 
   localStorage.removeItem('idToUpdate');
 
@@ -91,7 +91,7 @@ function Lists() {
       ));
     }
 
-    return pageList.map((item) => {
+    return pageList.map(item => {
       if(list === 'inviteds') {
         return (
         <li key={item.id}>
@@ -142,6 +142,7 @@ function Lists() {
           </li>
         );
       }
+      return '';
     })
   }
 

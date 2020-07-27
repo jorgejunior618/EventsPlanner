@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
-import CurrenyInput from 'react-currency-input';
 
 import api from '../../Services/api';
 import './style.css';
@@ -38,11 +37,13 @@ function CreateEvent() {
     }
 
     try {
-      const response = (action === 'new') ?
+      (action === 'new') ?
         await api.post(`events/${id}/services`, data) :
         await api.put(`events/${id}/services/${localStorage.getItem('idToUpdate')}`, data);
 
       alert('Serviço adicionado com sucesso');
+
+      history.push(`/event/${id}/services`);
     } catch (e) {
       alert('Erro ao criar serviço, tente novamente');
     }

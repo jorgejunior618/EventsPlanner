@@ -27,7 +27,7 @@ function CreateEvent() {
     }
 
     try {
-      const response = (action === 'new') ?
+      (action === 'new') ?
         await api.post('events', eventData) :
         await api.put(`events/${localStorage.getItem('eventToUpdateId')}`, eventData);
 

@@ -21,7 +21,7 @@ function CreateGift() {
     }
 
     try {
-      const response = (action === 'new') ?
+      (action === 'new') ?
         await api.post(`events/${id}/gifts`, data) :
         await api.put(`events/${id}/gifts/${localStorage.getItem('idToUpdate')}`, data);
 

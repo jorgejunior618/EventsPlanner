@@ -27,7 +27,7 @@ function CreateInvite() {
     api.get(`events/${id}/gifts`).then(response => {
       setGifts(response.data.filter(gift => (action === 'new') ? !gift.confirmed : (!gift.confirmed || +giftid === gift.id)));
     });
-  }, []);
+  }, [id, action, giftid]);
 
   async function handleNewInvited(event) {
     event.preventDefault();
@@ -41,7 +41,7 @@ function CreateInvite() {
     }
 
     try {
-      const response = (action === 'new') ?
+      (action === 'new') ?
         await api.post(`events/${id}/inviteds`, data) :
         await api.put(`events/${id}/inviteds/${+invitedId}`, data);
 

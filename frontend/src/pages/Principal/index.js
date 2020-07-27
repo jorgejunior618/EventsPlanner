@@ -14,7 +14,7 @@ function Prinipal() {
     api.get('events').then(response => {
       setEvents(response.data);
     })
-  }, [])
+  }, []);
 
   localStorage.clear();
 
