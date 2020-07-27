@@ -49,11 +49,10 @@ function Lists() {
     localStorage.setItem('servicePricing', servicePricing)
   }
 
-  function handleUpdateGift(giftId, giftProduct, giftConfirmed) {
+  function handleUpdateGift(giftId, giftProduct) {
     localStorage.setItem('idToUpdate', giftId);
 
     localStorage.setItem('giftProduct', giftProduct)
-    localStorage.setItem('giftConfirmed', giftConfirmed)
   }
 
   function handleUpdateInvited(invitedId, invitedName, invitedConfirmed, invitedGiftid) {
@@ -124,7 +123,7 @@ function Lists() {
         return (
           <li key={item.id}>
             <button
-              onClick={handleDelete}
+              onClick={() => handleDelete(item.id)}
               id="delete">
                 <img
                   src={trashIcon}
@@ -139,7 +138,7 @@ function Lists() {
               <strong> {item.confirmed? 'Sim' : 'Não'}</strong>
             </div>
 
-            <Link onClick={() => handleUpdateGift(item.id, item.product, item.confirmed)} to={`${list}/update`}>Editar</Link>
+            <Link onClick={() => handleUpdateGift(item.id, item.product)} to={`${list}/update`}>Editar</Link>
           </li>
         );
       }

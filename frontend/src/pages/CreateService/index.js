@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import CurrenyInput from 'react-currency-input';
 
 import './style.css';
 
 function CreateEvent() {
-  // alert(localStorage.getItem('idToUpdate'))
+  const { id, action } = useParams();
 
   return (
     <div>
@@ -17,7 +17,7 @@ function CreateEvent() {
         <div id="head">
           <h2>{localStorage.getItem('eventName')}</h2>
 
-          <Link to={`/event/${localStorage.getItem('eventId')}`}>
+          <Link to={`/event/${id}`}>
             <span></span>
             Pagina do evento
           </Link>
