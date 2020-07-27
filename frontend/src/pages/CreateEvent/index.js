@@ -68,6 +68,7 @@ function CreateEvent() {
               value={eventName}
               onChange={e => setName(e.target.value)}
               placeholder='Ex.: "Aniversário de Fulano", "Casamento"'
+              required
             />
           </div>
 
@@ -81,6 +82,7 @@ function CreateEvent() {
               id="date"
               value={eventDate}
               onChange={e => setDate(e.target.value)}
+              required
             />
           </div>
 

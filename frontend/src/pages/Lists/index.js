@@ -40,8 +40,28 @@ function Lists() {
     }
   }
 
-  function handleUpdate(id) {
-    localStorage.setItem('idToUpdate', id);
+  function handleUpdateService(serviceId, serviceName, serviceConfirmed, serviceProvider, servicePricing) {
+    localStorage.setItem('idToUpdate', serviceId);
+
+    localStorage.setItem('serviceName', serviceName)
+    localStorage.setItem('serviceConfirmed', serviceConfirmed)
+    localStorage.setItem('serviceProvider', serviceProvider)
+    localStorage.setItem('servicePricing', servicePricing)
+  }
+
+  function handleUpdateGift(giftId, giftProduct, giftConfirmed) {
+    localStorage.setItem('idToUpdate', giftId);
+
+    localStorage.setItem('giftProduct', giftProduct)
+    localStorage.setItem('giftConfirmed', giftConfirmed)
+  }
+
+  function handleUpdateInvited(invitedId, invitedName, invitedConfirmed, invitedGiftid) {
+    localStorage.setItem('idToUpdate', invitedId);
+
+    localStorage.setItem('invitedName', invitedName)
+    localStorage.setItem('invitedConfirmed', invitedConfirmed)
+    localStorage.setItem('invitedGiftid', invitedGiftid)
   }
 
   function showList() {
@@ -67,7 +87,7 @@ function Lists() {
             <strong>Valor:</strong><strong> {item.pricing}</strong>
           </div>
 
-          <Link onClick={() => handleUpdate(item.id)} to={`${list}/update`}>Editar</Link>
+          <Link onClick={() => handleUpdateService(item.id, item.service, item.confirmed, item.provider, item.pricing)} to={`${list}/update`}>Editar</Link>
         </li>
       ));
     }
@@ -95,7 +115,7 @@ function Lists() {
             <strong>Presente:</strong> {item.gift.id ? item.gift.product : 'Nenhum'}
           </div>
 
-          <Link onClick={() => handleUpdate(item.id)} to={`${list}/update`}>Editar</Link>
+          <Link onClick={() => handleUpdateInvited(item.id, item.name, item.confirmed, item.gift.id)} to={`${list}/update`}>Editar</Link>
         </li>
         );
       }
@@ -119,7 +139,7 @@ function Lists() {
               <strong> {item.confirmed? 'Sim' : 'Não'}</strong>
             </div>
 
-            <Link onClick={() => handleUpdate(item.id)} to={`${list}/update`}>Editar</Link>
+            <Link onClick={() => handleUpdateGift(item.id, item.product, item.confirmed)} to={`${list}/update`}>Editar</Link>
           </li>
         );
       }

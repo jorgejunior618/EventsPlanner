@@ -21,7 +21,7 @@ function Routes() {
         <Route path="/event/:id/:list" exact component={Lists} /> {/* Done */}
 
         <Route path="/events/:action" component={CreateEvent} /> {/* create: Done, update: Done */}
-        <Route path="/event/:id/inviteds/:action" component={CreateInvite} /> {/* Create: ToDo, update: ToDo */}
+        <Route path="/event/:id/inviteds/:action" component={CreateInvite} /> {/* Create: Doing, update: ToDo */}
         <Route path="/event/:id/gifts/:action" component={CreateGift} /> {/* Create: ToDo, update: ToDo */}
         <Route path="/event/:id/services/:action" component={CreateService} /> {/* Create: ToDo, update: ToDo */}
       </Switch>

@@ -32,14 +32,16 @@ exports.read = async (req, res) => {
 }
 
 exports.create = async (req, res) => {
-  const { name, giftid } = req.body;
+  const { name, confirmed, giftid } = req.body;
   const { eventid } = req.params;
+
+  console.log(confirmed, typeof confirmed)
 
   try {
     const response = await configDb
       .query(
-        'INSERT INTO inviteds (name, giftid, eventid) VALUES($1, $2, $3)',
-        [name, giftid, eventid]
+        'INSERT INTO inviteds (name, giftid, confirmed, eventid) VALUES($1, $2, $3, $4)',
+        [name, giftid, confirmed, eventid]
       );
 
     return res.json({
@@ -49,6 +51,7 @@ exports.create = async (req, res) => {
   catch(e) {
     return(res.json({
       error: `Error on table: ${e.table}, column: ${e.column} when creating invite`,
+      e
     }));
   }
 }
