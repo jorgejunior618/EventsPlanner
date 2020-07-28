@@ -35,8 +35,6 @@ exports.create = async (req, res) => {
   const { name, confirmed, giftid } = req.body;
   const { eventid } = req.params;
 
-  console.log(confirmed, typeof confirmed)
-
   try {
     const response = await configDb
       .query(

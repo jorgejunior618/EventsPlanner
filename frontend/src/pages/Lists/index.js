@@ -11,7 +11,7 @@ function Lists() {
   const pageName = list === 'inviteds' ? 'Convidados' : (list === 'gifts'? 'Presentes':'Serviços');
 
   const [ pageList, setPageList ] = useState(
-    (list === 'services') ? { services: [{id:0}], totalPricing: 0 } : []
+    (list === 'services') ? { services: [], totalPricing: 0 } : []
   );
 
   useEffect(() => {
@@ -184,14 +184,15 @@ function Lists() {
           {(list ==='services')? (
               <div
                 id="total-price"
-                key={pageList.services[pageList.services.length-1].id + 1}
+                key={0}
               >
                 <div>
-                <strong>Valor total dos serviços:</strong>
-                <strong>{
-                  pageList.totalPricing
-                  .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-                }</strong>
+                  <strong>Valor total dos serviços:</strong>
+
+                  <strong>{
+                    pageList.totalPricing
+                    .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+                  }</strong>
                 </div>
               </div>
             ): ''}
