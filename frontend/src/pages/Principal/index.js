@@ -21,7 +21,7 @@ function Prinipal() {
   async function handleDelete(id) {
     await api.delete(`events/${id}`);
 
-    alert('Contato excluído com sucesso!');
+    alert('Evento excluído com sucesso!');
 
     setEvents(events.filter(event => event.id !== id))
   }

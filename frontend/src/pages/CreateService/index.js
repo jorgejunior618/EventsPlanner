@@ -33,7 +33,7 @@ function CreateEvent() {
       service,
       provider,
       pricing,
-      confirmed
+      confirmed: ('' + confirmed).startsWith('true')
     }
 
     try {
@@ -115,8 +115,8 @@ function CreateEvent() {
                 type="checkbox"
                 name="confirmation"
                 id="confirmation"
-                checked={confirmed}
-                onChange={e => setConfirmed(e.target.value)}
+                checked={confirmed ? ('' + confirmed).startsWith('true') : false}
+                onChange={e => setConfirmed(e.target.checked)}
               />
             </div>
           </div>

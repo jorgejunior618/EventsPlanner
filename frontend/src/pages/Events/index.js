@@ -72,6 +72,29 @@ function Event() {
         <Link id="open-list" to={`${id}/inviteds`}>Ver Lista</Link>
       </section>
 
+      <section id="services">
+        <div id="manage-list">
+          <h3>Serviços contratados</h3>
+
+          <Link id="create" to={`${id}/services/new`}>
+            Adicionar Serviço
+            <span></span>
+          </Link>
+        </div>
+
+        <ul>
+        {services.map(service => (
+          <li>
+            <p>{service.service}</p>
+          </li>
+        ))}
+
+          <li key="0"> ... </li>
+        </ul>
+
+        <Link id="open-list" to={`${id}/services`}>Ver Lista</Link>
+      </section>
+
       <section id="gifts">
         <div id="manage-list">
           <h3>Lista de Presentes</h3>
@@ -94,29 +117,6 @@ function Event() {
         </ul>
 
         <Link id="open-list" to={`${id}/gifts`}>Ver Lista</Link>
-      </section>
-
-      <section id="services">
-        <div id="manage-list">
-          <h3>Serviços contratados</h3>
-
-          <Link id="create" to={`${id}/services/new`}>
-            Adicionar Serviço
-            <span></span>
-          </Link>
-        </div>
-
-        <ul>
-        {services.map(service => (
-          <li>
-            <p>{service.service}</p>
-          </li>
-        ))}
-
-          <li key="0"> ... </li>
-        </ul>
-
-        <Link id="open-list" to={`${id}/services`}>Ver Lista</Link>
       </section>
 
     </div>

@@ -36,14 +36,17 @@ function CreateInvite() {
 
     const data = {
       name,
-      confirmed,
-      giftid
+      confirmed: ('' + confirmed).startsWith('true'),
+      giftid: ('' + giftid).startsWith('undefined') ? null : giftid
     }
 
+    console.log(data)
+    console.log(data.giftid, typeof data.giftid)
+
     try {
-      (action === 'new') ?
-        await api.post(`events/${id}/inviteds`, data) :
-        await api.put(`events/${id}/inviteds/${+invitedId}`, data);
+      (action === 'new')
+      ? await api.post(`events/${id}/inviteds`, data)
+      : await api.put(`events/${id}/inviteds/${+invitedId}`, data);
 
       alert('Convidado criado com sucesso');
       history.push(`/event/${id}/inviteds`);
@@ -91,7 +94,7 @@ function CreateInvite() {
               type="checkbox"
               name="confirmation"
               id="confirmation"
-              checked={confirmed}
+              checked={confirmed ? ('' + confirmed).startsWith('true') : false}
               onChange={e => setConfirmed(e.target.checked)}
             />
           </div>
@@ -101,6 +104,7 @@ function CreateInvite() {
             <select
               name="gift"
               id="gift"
+              defaultValue="0"
               onChange={e => setGiftId(+e.target.options[e.target.selectedIndex].value)}
             >
               <option value="0">Selecione o Presente</option>
