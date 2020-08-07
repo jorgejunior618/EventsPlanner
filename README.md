@@ -10,9 +10,7 @@
   <a aria-label="React" href="https://github.com/facebook/react">
     <img src="https://img.shields.io/badge/react-informational?logo=react"></img>
   </a>
-</p>
 
-<p align="center">
   <a aria-label="Node.JS" href="https://github.com/nodejs/node">
     <img src="https://img.shields.io/badge/node.js-informational?logo=node.js"></img>
   </a>
