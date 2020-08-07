@@ -9,7 +9,9 @@ exports.read = async (req, res) => {
     );
 
   const totalPricing = services
-  .reduce((acumulator, service) => acumulator + Number(service.pricing), 0);
+  .reduce((acumulator, service) =>
+    (service.confirmed) ? acumulator + Number(service.pricing) : acumulator,
+  0);
 
   return res.json({
     services,
